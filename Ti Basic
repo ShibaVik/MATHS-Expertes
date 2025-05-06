@@ -5,7 +5,8 @@
 :Disp "PAS PREMIER"
 :Stop
 :End
-:0→P
+
+:0→P      // P = 0 signifie "supposé premier"
 :1→I
 :Disp "DIVISEURS:"
 :While I≤N
@@ -13,10 +14,13 @@
 :Then
 :Disp I
 :If I≠1 and I≠N
-:1→P
+:Then
+:1→P     // Trouvé un diviseur ≠ 1 et N → pas premier
+:End
 :End
 :I+1→I
 :End
+
 :If P=0
 :Then
 :Disp "PREMIER"
