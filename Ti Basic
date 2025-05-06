@@ -1,0 +1,39 @@
+:ClrHome
+:Input "NOMBRE? ",N
+:If N<2
+:Then
+:Disp "PAS PREMIER"
+:Stop
+:End
+:0→P
+:1→I
+:Disp "DIVISEURS:"
+:While I≤N
+:If fPart(N/I)=0
+:Then
+:Disp I
+:If I≠1 and I≠N
+:1→P
+:End
+:I+1→I
+:End
+:If P=0
+:Then
+:Disp "PREMIER"
+:Else
+:Disp "PAS PREMIER"
+:End
+
+:Pause 
+:ClrHome
+:Disp "FACTEURS PREMIERS:"
+:2→F
+:While N>1
+:If fPart(N/F)=0
+:Then
+:Disp F
+:N/F→N
+:Else
+:F+1→F
+:End
+:End
