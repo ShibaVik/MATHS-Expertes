@@ -1,24 +1,31 @@
 def est_premier(n):
-    if n <= 1:
+    if n < 2:
         return False
-    if n <= 3:
-        return True
-    if n % 2 == 0 or n % 3 == 0:
-        return False
-    i = 5
-    while i * i <= n:
-        if n % i == 0 or n % (i + 2) == 0:
+    for i in range(2, int(n**0.5)+1):
+        if n % i == 0:
             return False
-        i += 6
     return True
 
-def pi(n):
-    compteur = 0
-    for i in range(2, n):
-        if est_premier(i):
-            compteur += 1
-    return compteur
+def diviseurs(n):
+    return [i for i in range(1, n+1) if n % i == 0]
 
-n = int(input("Entrez un nombre : "))
-print(f"{n} est premier ? {est_premier(n)}")
-print(f"pi({n}) = {pi(n)} (nombres premiers < {n})")
+def facteurs_premiers(n):
+    i = 2
+    facteurs = []
+    while i * i <= n:
+        while n % i == 0:
+            facteurs.append(i)
+            n //= i
+        i += 1
+    if n > 1:
+        facteurs.append(n)
+    return facteurs
+
+# Exemple d'utilisation :
+nombre = int(input("Entrez un nombre : "))
+
+print(f"Le nombre {nombre} est {'premier' if est_premier(nombre) else 'composé'}.")
+
+print(f"Diviseurs de {nombre} : {diviseurs(nombre)}")
+
+print(f"Décomposition en facteurs premiers de {nombre} : {facteurs_premiers(nombre)}")
